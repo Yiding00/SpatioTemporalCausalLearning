@@ -1,6 +1,7 @@
 import torch
 import torch.nn as nn
 import torch.nn.functional as F
+from BaseBlock.TwoLayerMLP import MLP
 
 class GRUGCN(nn.Module):
     '''Using GRU+GCN to generate hidden representation of spatio-temporal data'''

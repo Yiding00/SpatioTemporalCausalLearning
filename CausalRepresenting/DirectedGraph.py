@@ -4,7 +4,7 @@ import torch.nn.functional as F
 
 # DiBS Eq.6, A generalization of VGAE
 
-class DiBS_DirectedGraph(nn.Module):
+class DirectedGraph(nn.Module):
     def forward(self, inputs):
         u_mean = inputs[:,:,:,0].unsqueeze(3)
         u_var = inputs[:,:,:,1].unsqueeze(3)
@@ -18,3 +18,4 @@ class DiBS_DirectedGraph(nn.Module):
         out = torch.sigmoid(temp)
         # return x
         return u, v, out
+
