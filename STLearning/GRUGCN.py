@@ -3,7 +3,7 @@ import torch.nn as nn
 import torch.nn.functional as F
 
 class GRUGCN(nn.Module):
-    # 定义因果掩码估计网络
+    '''Using GRU+GCN to generate hidden representation of spatio-temporal data'''
 
     def __init__(self, graph_kernel, n_in, n_hid, n_out=1, do_prob=0.):
         super(GRUGCN, self).__init__()

@@ -2,7 +2,9 @@ import torch
 import torch.nn as nn
 import torch.nn.functional as F
 
-class VGAE(nn.Module):
+# DiBS Eq.6, A generalization of VGAE
+
+class DiBS_DirectedGraph(nn.Module):
     def forward(self, inputs):
         u_mean = inputs[:,:,:,0].unsqueeze(3)
         u_var = inputs[:,:,:,1].unsqueeze(3)
