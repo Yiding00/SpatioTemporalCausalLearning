@@ -31,3 +31,4 @@ class MyDataset_ADNI(Dataset):
         data = torch.tensor(data_value, dtype=torch.float32)
         group = self.group[idx]
         return data, id, group
+
