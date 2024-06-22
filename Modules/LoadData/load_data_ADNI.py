@@ -5,17 +5,25 @@ from torch.utils.data import DataLoader
 import pandas as pd 
 import numpy as np
 
-def get_dataloader(batch_size):
+def get_dataloader(batch_size, parent):
     data_list = []
     id_list = []
     group_list = []
-    df = pd.read_csv("../../../data/ADNI-adhd/label.csv")
-
+    if parent==3:
+        dir = "../../../data/ADNI-adhd/"
+    elif parent==2:
+        dir = "../../data/ADNI-adhd/"  
+    elif parent==1:
+        dir = "../data/ADNI-adhd/"
+    else:
+        dir = None
+        print("Invalid parent")
+    df = pd.read_csv(dir +"label.csv")
     # id, group, sex, age, visit
     # group: CN, EMCI, LMCI, MCI, SMC
     # sex: F, M
     for row in df.itertuples():
-        folder = "../../../data/ADNI-adhd/" + row.group + "/" + row.id + ".txt"
+        folder = dir + row.group + "/" + row.id + ".txt"
         row_data = pd.read_csv(folder, sep='\s+', header=None).values
         data_list.append(row_data)
         id_list.append(row.id)
