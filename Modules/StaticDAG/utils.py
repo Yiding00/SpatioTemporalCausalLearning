@@ -3,7 +3,20 @@ import torch.nn as nn
 import math
 import numpy as np
 import scipy.linalg as slin
+import torch.nn.functional as F
 
+def my_softmax(input, axis=1):
+    trans_input = input.transpose(axis, 0).contiguous()
+    soft_max_1d = F.softmax(trans_input)
+    return soft_max_1d.transpose(axis, 0)
+
+def get_offdiag_indices(num_nodes):
+    """Linear off-diagonal indices."""
+    ones = torch.ones(num_nodes, num_nodes)
+    eye = torch.eye(num_nodes, num_nodes)
+    offdiag_indices = (ones - eye).nonzero().t()
+    offdiag_indices = offdiag_indices[0] * num_nodes + offdiag_indices[1]
+    return offdiag_indices
 
 class TraceExpm(torch.autograd.Function):
     @staticmethod
