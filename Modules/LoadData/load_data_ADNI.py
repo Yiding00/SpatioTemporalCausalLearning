@@ -1,20 +1,21 @@
-import sys
 import pandas as pd
-from .utils import MyDataset_ADNI
+from .utils import MyDataset
 from torch.utils.data import DataLoader
 import pandas as pd 
-import numpy as np
 
 def get_dataloader(batch_size, parent):
+    '''
+    torch.Size([batch_size, 187, 90])
+    '''
     data_list = []
     id_list = []
     group_list = []
     if parent==3:
-        dir = "../../../data/ADNI-adhd/"
+        dir = "../../../data/ADNI/"
     elif parent==2:
-        dir = "../../data/ADNI-adhd/"  
+        dir = "../../data/ADNI/"  
     elif parent==1:
-        dir = "../data/ADNI-adhd/"
+        dir = "../data/ADNI/"
     else:
         dir = None
         print("Invalid parent")
@@ -28,6 +29,6 @@ def get_dataloader(batch_size, parent):
         data_list.append(row_data)
         id_list.append(row.id)
         group_list.append(row.group)
-    dataset = MyDataset_ADNI(data_list, id_list, group_list)
-    dataloader = DataLoader(dataset, batch_size=batch_size)
+    dataset = MyDataset(data_list, id_list, group_list)
+    dataloader = DataLoader(dataset, batch_size=batch_size, shuffle=True)
     return dataloader

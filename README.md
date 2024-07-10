@@ -1,16 +1,24 @@
 # SpatioTemporalCausalLearning
 
-A modularized repository for Spatio-Temporal Causal Learning under ADNI database ([https://adni.loni.usc.edu/](https://adni.loni.usc.edu/)).
+A modularized repository for Spatio-Temporal Causal Learning under 
+- ADNI ([https://adni.loni.usc.edu/](https://adni.loni.usc.edu/))
+- IRMA ([https://www.cell.com/supplemental/S0092-8674(09)00156-1](https://www.cell.com/supplemental/S0092-8674(09)00156-1))
+- DREAM3 ([https://gnw.sourceforge.net/dreamchallenge.html#dream3challenge](https://gnw.sourceforge.net/dreamchallenge.html#dream3challenge))
+- Netsim ([https://www.fmrib.ox.ac.uk/datasets/netsim/](https://www.fmrib.ox.ac.uk/datasets/netsim/))
+- VAR 
+- Lorenz96
 
 ## Running
 Put ADNI data folder outside this repository like the structure below:
 ```
 ├── data
-│   └── ADNI-adhd
-│       ├── CN
-│       ├── ...
-│       ├── SMC
-│       └── label.csv
+│   ├── ADNI
+│   │   ├── CN
+│   │   ├── ...
+│   │   └── label.csv
+│   ├── IRMA
+│   ├── ...
+│   └── Netsim
 └── SpatioTemporalCausalLearning
 ```
 Example: Run NOTEARS
