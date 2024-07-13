@@ -10,15 +10,8 @@ def get_dataloader(batch_size, parent):
     data_list = []
     id_list = []
     group_list = []
-    if parent==3:
-        dir = "../../../data/ADNI/"
-    elif parent==2:
-        dir = "../../data/ADNI/"  
-    elif parent==1:
-        dir = "../data/ADNI/"
-    else:
-        dir = None
-        print("Invalid parent")
+    dir = "../"*parent+"data/ADNI/"
+
     df = pd.read_csv(dir +"label.csv")
     # id, group, sex, age, visit
     # group: CN, EMCI, LMCI, MCI, SMC

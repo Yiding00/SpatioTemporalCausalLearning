@@ -9,15 +9,8 @@ def get_dataloader(batch_size, parent):
     data_list = []
     id_list = []
     group_list = []
-    if parent==3:
-        dir = "../../../data/IRMA/"
-    elif parent==2:
-        dir = "../../data/IRMA/"  
-    elif parent==1:
-        dir = "../data/IRMA/"
-    else:
-        dir = None
-        print("Invalid parent")
+    dir = "../"*parent+"data/IRMA/"
+
     exp_num = {
         "on": 8,
         "off": 10,
