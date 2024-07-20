@@ -8,7 +8,7 @@ __pycache__/
 # My unseen file
 data/
 *NOTPUB*
-reverse*
+*reverse*
 mynotes*
 nohup*
 ECNs*

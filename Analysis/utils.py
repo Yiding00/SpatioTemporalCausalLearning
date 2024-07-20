@@ -3,6 +3,7 @@ from sklearn.datasets import make_classification
 from sklearn.preprocessing import StandardScaler
 from sklearn.metrics import accuracy_score, roc_auc_score, f1_score, roc_curve
 import matplotlib.pyplot as plt
+import numpy as np
 
 def classification(X, y, model):
     X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
@@ -32,3 +33,22 @@ def classification(X, y, model):
 
 def invert_dict(d):
     return {value: key for key, value in d.items()}
+
+def get_flows(AllLobes, lobes, Causalities,threshold = 0.1, weighted=False):
+    Flows=np.zeros([2,7,7])
+    for k in range(2):
+        Flows[k] = get_single_flow(AllLobes, lobes, Causalities[k],threshold, weighted)
+    return Flows
+
+def get_single_flow(AllLobes, lobes, Causalities,threshold = 0.1, weighted=False):
+    Flow=np.zeros([7,7])
+    for i in range(90):
+        for j in range(90):
+            lobe_i = np.where(AllLobes == lobes[i])[0][0]
+            lobe_j = np.where(AllLobes == lobes[j])[0][0]
+            if Causalities[i,j]>threshold:
+                if weighted:
+                    Flow[lobe_i][lobe_j]+=Causalities[i,j]
+                else:
+                    Flow[lobe_i][lobe_j]+=1
+    return Flow

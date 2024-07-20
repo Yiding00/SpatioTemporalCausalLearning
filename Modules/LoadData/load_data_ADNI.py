@@ -25,3 +25,11 @@ def get_dataloader(batch_size, parent):
     dataset = MyDataset(data_list, id_list, group_list)
     dataloader = DataLoader(dataset, batch_size=batch_size, shuffle=True)
     return dataloader
+
+def get_labels(parent):
+
+    dir = "../"*parent+"data/ADNI/"
+
+    df = pd.read_csv(dir +"label.csv")
+
+    return df
